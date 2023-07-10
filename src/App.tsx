@@ -9,11 +9,12 @@ import {
   OrderedList,
   Text,
 } from "@chakra-ui/react";
-import { Link, Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
+import Dart from "./Components/Dart";
 
 function App() {
   return (
-    <Flex flexDirection="column" minHeight="100vh">
+    <Flex flexDirection="column" minHeight="100vh" cursor="none">
       <Flex
         background="#138D69"
         justifyContent="center"
@@ -48,6 +49,7 @@ function App() {
               as={ReactRouterLink}
               to="/about"
               p="1rem"
+              cursor="none"
               color="#481710"
               fontWeight="bold"
               textDecoration="none"
@@ -148,6 +150,7 @@ function App() {
             </Flex>
           </Flex>
         </Flex>
+
         <Box position="relative" padding="10" bg="green">
           <Divider h="10px" flex="1" bg="gray" />
 
@@ -155,43 +158,8 @@ function App() {
             GAME
           </AbsoluteCenter>
         </Box>
-        <Flex
-          background="#8F2C19"
-          h="400px"
-          w="100%"
-          justifyContent="center"
-          alignItems="center"
-          marginBottom="1rem"
-          position="relative"
-          flexDirection="row"
-          _hover={{ background: "tomato" }}
-        >
-          <Link
-            to="/shuffle"
-            color="#fff"
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              padding: "1rem",
-              background: "#f48024",
-              fontSize: "20px",
-              fontWeight: "bold",
-              borderRadius: "5px",
-              zIndex: 1,
-            }}
-          >
-            I want to play a game
-          </Link>
-          <Box boxSize="sm">
-            <Image
-              src="https://i.ytimg.com/vi/4siRWMULqj4/hqdefault.jpg"
-              alt="Dan Abramov"
-            />
-          </Box>
-        </Flex>
       </Flex>
+      <Dart />
     </Flex>
   );
 }
