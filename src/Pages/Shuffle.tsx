@@ -1,3 +1,4 @@
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -24,9 +25,24 @@ const Shuffle: FC = () => {
   });
 
   return (
-    <div>
-      <h1>Welcome to Shuffle Apple</h1>
-      <h2 className="nums ">-0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16-</h2>
+    <Flex
+      flexDirection="column"
+      backgroundColor="#8A8D7F"
+      alignItems="center"
+      h="100%"
+    >
+      <Flex background="#6A6562" borderRadius="50%">
+        <Text
+          fontFamily="heading"
+          fontSize="30px"
+          fontWeight="bold"
+          p={10}
+          textColor="Scrollbar"
+        >
+          Welcome to Shuffle Apple
+        </Text>
+      </Flex>
+      <Box>-0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16-</Box>
       <p className="p">
         As you see we have numbers from 0 to 16. Whenever you click on our magic
         button we will divide numbers into 4 teams. Each team has unique
@@ -52,12 +68,14 @@ const Shuffle: FC = () => {
         <br></br>
       </div>
       <h3 className="ready">Are you ready to shuffle them all?</h3>
-      <button className="btn" onClick={handleClick}>
-        Let's Shuffle
-      </button>
+      <Flex>
+        <Button size="md" onClick={handleClick} cursor="cell">
+          Let's Shuffle
+        </Button>
+      </Flex>
       <p className="gest">Discussed in Belgium, coded in Turkey</p>
       <Link to="/">Home</Link>;
-    </div>
+    </Flex>
   );
 };
 
