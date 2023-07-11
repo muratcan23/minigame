@@ -2,6 +2,7 @@ import {
   Button,
   Divider,
   Flex,
+  HStack,
   ListItem,
   Text,
   UnorderedList,
@@ -37,8 +38,8 @@ const Shuffle: FC = () => {
       flexDirection="column"
       backgroundColor="#8A8D7F"
       alignItems="center"
-      h="100vh"
-      w="100vw"
+      h="100%"
+      w="100%"
     >
       <Flex
         background="#6A6562"
@@ -59,29 +60,7 @@ const Shuffle: FC = () => {
         </Text>
       </Flex>
       <Divider color="red" border="1px solid #7B1A42" />
-      <Flex flexDirection="column">
-        <Text
-          m="0"
-          fontFamily="cursive"
-          fontWeight="hairline"
-          color="ButtonShadow"
-        >
-          Table:
-        </Text>
-        <Flex
-          border="5px solid #746E6E"
-          borderRadius="5px"
-          bg="#BD5151"
-          h="60px"
-          w="355px"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Text fontFamily="body" fontWeight="bold" letterSpacing="1px">
-            0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
-          </Text>
-        </Flex>
-      </Flex>
+
       <Flex
         flexDirection="column"
         bg="#138d69"
@@ -159,9 +138,201 @@ const Shuffle: FC = () => {
             </Text>
           </ListItem>
         </UnorderedList>
+        <Flex flexDirection="column">
+          <Text
+            m="0"
+            fontFamily="cursive"
+            fontWeight="hairline"
+            color="ButtonShadow"
+          >
+            Table:
+          </Text>
+          <Flex
+            border="5px solid #746E6E"
+            borderRadius="5px"
+            bg="#BD5151"
+            h="60px"
+            w="355px"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text fontFamily="body" fontWeight="bold" letterSpacing="1px">
+              0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+            </Text>
+          </Flex>
+        </Flex>
       </Flex>
+      <HStack m="4px" spacing="25px">
+        <Flex
+          h="80px"
+          w="200px"
+          borderRadius="2px"
+          border="1px solid black"
+          bg="#4283B1"
+        >
+          <Flex
+            border="1px solid red"
+            borderRadius="2px"
+            bg="#BEE27A"
+            w="42x"
+            h="42px"
+            alignItems="center"
+            justifyContent="center"
+            m="2px auto auto 3px"
+          >
+            <Text
+              fontFamily="heading"
+              fontSize="18px"
+              fontWeight="bold"
+              color="black"
+            >
+              A
+            </Text>
+          </Flex>
+          <Flex
+            border="1px solid  red"
+            h="45px"
+            w="125px"
+            alignItems="center"
+            bg="#E7DDDD"
+            borderLeftRadius="25px"
+          >
+            <Text fontFamily="body" fontSize="25px">
+              {arr1.map((item) => {
+                return <span key={item}> {item}</span>;
+              })}
+            </Text>
+          </Flex>
+        </Flex>
 
-      <div className="showcase">
+        <Flex
+          h="80px"
+          w="200px"
+          borderRadius="2px"
+          border="1px solid black"
+          bg="#4283B1"
+        >
+          <Flex
+            border="1px solid red"
+            borderRadius="2px"
+            bg="#BEE27A"
+            w="42x"
+            h="42px"
+            alignItems="center"
+            justifyContent="center"
+            m="2px auto auto 3px"
+          >
+            <Text
+              fontFamily="heading"
+              fontSize="18px"
+              fontWeight="bold"
+              color="black"
+            >
+              B
+            </Text>
+          </Flex>
+          <Flex
+            border="1px solid  red"
+            h="45px"
+            w="125px"
+            alignItems="center"
+            bg="#E7DDDD"
+            borderLeftRadius="25px"
+          >
+            <Text fontFamily="body" fontSize="25px">
+              {arr2.map((item) => {
+                return <span key={item}> {item}</span>;
+              })}
+            </Text>
+          </Flex>
+        </Flex>
+
+        <Flex
+          h="80px"
+          w="200px"
+          borderRadius="2px"
+          border="1px solid black"
+          bg="#4283B1"
+        >
+          <Flex
+            border="1px solid red"
+            borderRadius="2px"
+            bg="#BEE27A"
+            w="42x"
+            h="42px"
+            alignItems="center"
+            justifyContent="center"
+            m="2px auto auto 3px"
+          >
+            <Text
+              fontFamily="heading"
+              fontSize="18px"
+              fontWeight="bold"
+              color="black"
+            >
+              C
+            </Text>
+          </Flex>
+          <Flex
+            border="1px solid  red"
+            h="45px"
+            w="125px"
+            alignItems="center"
+            bg="#E7DDDD"
+            borderLeftRadius="25px"
+          >
+            <Text fontFamily="body" fontSize="25px">
+              {arr3.map((item) => {
+                return <span key={item}> {item}</span>;
+              })}
+            </Text>
+          </Flex>
+        </Flex>
+
+        <Flex
+          h="80px"
+          w="200px"
+          borderRadius="2px"
+          border="1px solid black"
+          bg="#4283B1"
+        >
+          <Flex
+            border="1px solid red"
+            borderRadius="2px"
+            bg="#BEE27A"
+            w="42x"
+            h="42px"
+            alignItems="center"
+            justifyContent="center"
+            m="2px auto auto 3px"
+          >
+            <Text
+              fontFamily="heading"
+              fontSize="18px"
+              fontWeight="bold"
+              color="black"
+            >
+              D
+            </Text>
+          </Flex>
+          <Flex
+            border="1px solid  red"
+            h="45px"
+            w="125px"
+            alignItems="center"
+            bg="#E7DDDD"
+            borderLeftRadius="25px"
+          >
+            <Text fontFamily="body" fontSize="25px">
+              {arr4.map((item) => {
+                return <span key={item}> {item}</span>;
+              })}
+            </Text>
+          </Flex>
+        </Flex>
+      </HStack>
+
+      {/* <div>
         <br></br>
         {arr1.map((item) => {
           return <span key={item}>*** {item}*** </span>;
@@ -179,8 +350,9 @@ const Shuffle: FC = () => {
           return <span key={item}>*** {item}*** </span>;
         })}
         <br></br>
-      </div>
+      </div> */}
       <h3 className="ready">Are you ready to shuffle them all?</h3>
+
       <Flex>
         <Button size="md" onClick={handleClick} cursor="cell">
           Let's Shuffle
