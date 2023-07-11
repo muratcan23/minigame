@@ -1,10 +1,12 @@
 import {
+  Box,
   Button,
   Divider,
   Flex,
   HStack,
   ListItem,
   Text,
+  Tooltip,
   UnorderedList,
 } from "@chakra-ui/react";
 import { FC, useState } from "react";
@@ -13,25 +15,64 @@ import HomeIcon from "../Components/icons/HomeIcon";
 
 const Shuffle: FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
+  const [round, setRound] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const arr1: number[] = [];
   const arr2: number[] = [];
   const arr3: number[] = [];
   const arr4: number[] = [];
 
   const handleClick = () => {
-    const itemList = Array.from(Array(16).keys());
+    // To limit 5 rounds
+    if (round < 5) {
+      const itemList = Array.from(Array(16).keys());
 
-    const shuffledNumbers = itemList.sort(function () {
-      return Math.random() - 0.5;
-    });
-    setNumbers(shuffledNumbers);
+      const shuffledNumbers = itemList.sort(function () {
+        return Math.random() - 0.5;
+      });
+      setNumbers(shuffledNumbers);
+
+      setRound(round + 1);
+    } else {
+      // Stop the game
+      setIsDisabled(true);
+    }
   };
+
   numbers.map((item, i) => {
     if (i < 4) return arr1.push(item);
     if (i < 8) return arr2.push(item);
     if (i < 12) return arr3.push(item);
     if (i < 16) return arr4.push(item);
   });
+
+  const sumArray = (arr: number[]) => {
+    return arr.reduce((sum, num) => sum + num, 0);
+  };
+
+  const sum1 = sumArray(arr1);
+  const sum2 = sumArray(arr2);
+  const sum3 = sumArray(arr3);
+  const sum4 = sumArray(arr4);
+
+  let winner = "";
+  const maxSum = Math.max(sum1, sum2, sum3, sum4);
+
+  switch (maxSum) {
+    case sum1:
+      winner = "A";
+      break;
+    case sum2:
+      winner = "B";
+      break;
+    case sum3:
+      winner = "C";
+      break;
+    case sum4:
+      winner = "D";
+      break;
+  }
 
   return (
     <Flex
@@ -162,219 +203,299 @@ const Shuffle: FC = () => {
           </Flex>
         </Flex>
       </Flex>
-      <HStack m="4px" spacing="25px">
+      <HStack m="4px" spacing="55px">
+        {/* A */}
         <Flex
-          h="80px"
+          h="90px"
           w="200px"
-          borderRadius="2px"
+          borderRadius="5px"
           border="1px solid black"
           bg="#4283B1"
+          flexDirection="column"
+          justifyContent="center"
         >
-          <Flex
-            border="1px solid red"
-            borderRadius="2px"
-            bg="#BEE27A"
-            w="42x"
-            h="42px"
-            alignItems="center"
-            justifyContent="center"
-            m="2px auto auto 3px"
-          >
-            <Text
-              fontFamily="heading"
-              fontSize="18px"
-              fontWeight="bold"
-              color="black"
+          <Flex>
+            <Flex
+              border="1px solid red"
+              borderRadius="2px"
+              bg="#BEE27A"
+              w="42x"
+              h="42px"
+              alignItems="center"
+              justifyContent="center"
+              m="2px auto auto 3px"
             >
-              A
+              <Text
+                fontFamily="heading"
+                fontSize="18px"
+                fontWeight="bold"
+                color="black"
+              >
+                A
+              </Text>
+            </Flex>
+            <Flex
+              border="1px solid  red"
+              h="45px"
+              w="125px"
+              alignItems="center"
+              bg="#E7DDDD"
+              borderLeftRadius="25px"
+            >
+              <Text
+                fontFamily="body"
+                fontSize="20px"
+                ml="15px"
+                letterSpacing="2px"
+              >
+                {arr1.map((item) => {
+                  return <span key={item}> {item}</span>;
+                })}
+              </Text>
+            </Flex>
+          </Flex>
+
+          <Flex h="40px" ml="auto">
+            <Text mr="5px" fontSize="18px" fontWeight="bold" color="#EEE4E4">
+              Sum A = {sum1}
             </Text>
           </Flex>
-          <Flex
-            border="1px solid  red"
-            h="45px"
-            w="125px"
-            alignItems="center"
-            bg="#E7DDDD"
-            borderLeftRadius="25px"
-          >
-            <Text fontFamily="body" fontSize="25px">
-              {arr1.map((item) => {
-                return <span key={item}> {item}</span>;
-              })}
+        </Flex>
+        {/* B */}
+        <Flex
+          h="90px"
+          w="200px"
+          borderRadius="5px"
+          border="1px solid black"
+          bg="#4283B1"
+          flexDirection="column"
+          justifyContent="center"
+        >
+          <Flex>
+            <Flex
+              border="1px solid red"
+              borderRadius="2px"
+              bg="#BEE27A"
+              w="42x"
+              h="42px"
+              alignItems="center"
+              justifyContent="center"
+              m="2px auto auto 3px"
+            >
+              <Text
+                fontFamily="heading"
+                fontSize="18px"
+                fontWeight="bold"
+                color="black"
+              >
+                B
+              </Text>
+            </Flex>
+            <Flex
+              border="1px solid  red"
+              h="45px"
+              w="125px"
+              alignItems="center"
+              bg="#E7DDDD"
+              borderLeftRadius="25px"
+            >
+              <Text
+                fontFamily="body"
+                fontSize="20px"
+                ml="15px"
+                letterSpacing="2px"
+              >
+                {arr2.map((item) => {
+                  return <span key={item}> {item}</span>;
+                })}
+              </Text>
+            </Flex>
+          </Flex>
+
+          <Flex h="40px" ml="auto">
+            <Text mr="5px" fontSize="18px" fontWeight="bold" color="#EEE4E4">
+              Sum B = {sum2}
             </Text>
           </Flex>
         </Flex>
 
+        {/* C */}
         <Flex
-          h="80px"
+          h="90px"
           w="200px"
-          borderRadius="2px"
+          borderRadius="5px"
           border="1px solid black"
           bg="#4283B1"
+          flexDirection="column"
+          justifyContent="center"
         >
-          <Flex
-            border="1px solid red"
-            borderRadius="2px"
-            bg="#BEE27A"
-            w="42x"
-            h="42px"
-            alignItems="center"
-            justifyContent="center"
-            m="2px auto auto 3px"
-          >
-            <Text
-              fontFamily="heading"
-              fontSize="18px"
-              fontWeight="bold"
-              color="black"
+          <Flex>
+            <Flex
+              border="1px solid red"
+              borderRadius="2px"
+              bg="#BEE27A"
+              w="42x"
+              h="42px"
+              alignItems="center"
+              justifyContent="center"
+              m="2px auto auto 3px"
             >
-              B
-            </Text>
+              <Text
+                fontFamily="heading"
+                fontSize="18px"
+                fontWeight="bold"
+                color="black"
+              >
+                C
+              </Text>
+            </Flex>
+            <Flex
+              border="1px solid  red"
+              h="45px"
+              w="125px"
+              alignItems="center"
+              bg="#E7DDDD"
+              borderLeftRadius="25px"
+            >
+              <Text
+                fontFamily="body"
+                fontSize="20px"
+                ml="15px"
+                letterSpacing="2px"
+              >
+                {arr3.map((item) => {
+                  return <span key={item}> {item}</span>;
+                })}
+              </Text>
+            </Flex>
           </Flex>
-          <Flex
-            border="1px solid  red"
-            h="45px"
-            w="125px"
-            alignItems="center"
-            bg="#E7DDDD"
-            borderLeftRadius="25px"
-          >
-            <Text fontFamily="body" fontSize="25px">
-              {arr2.map((item) => {
-                return <span key={item}> {item}</span>;
-              })}
+          <Flex h="40px" ml="auto">
+            <Text mr="5px" fontSize="18px" fontWeight="bold" color="#EEE4E4">
+              Sum C = {sum3}
             </Text>
           </Flex>
         </Flex>
 
+        {/* D */}
         <Flex
-          h="80px"
+          h="90px"
           w="200px"
-          borderRadius="2px"
+          borderRadius="5px"
           border="1px solid black"
           bg="#4283B1"
+          flexDirection="column"
+          justifyContent="center"
         >
-          <Flex
-            border="1px solid red"
-            borderRadius="2px"
-            bg="#BEE27A"
-            w="42x"
-            h="42px"
-            alignItems="center"
-            justifyContent="center"
-            m="2px auto auto 3px"
-          >
-            <Text
-              fontFamily="heading"
-              fontSize="18px"
-              fontWeight="bold"
-              color="black"
+          <Flex>
+            <Flex
+              border="1px solid red"
+              borderRadius="2px"
+              bg="#BEE27A"
+              w="42x"
+              h="42px"
+              alignItems="center"
+              justifyContent="center"
+              m="2px auto auto 3px"
             >
-              C
-            </Text>
+              <Text
+                fontFamily="heading"
+                fontSize="18px"
+                fontWeight="bold"
+                color="black"
+              >
+                D
+              </Text>
+            </Flex>
+            <Flex
+              border="1px solid  red"
+              h="45px"
+              w="125px"
+              alignItems="center"
+              bg="#E7DDDD"
+              borderLeftRadius="25px"
+            >
+              <Text
+                fontFamily="body"
+                fontSize="20px"
+                ml="15px"
+                letterSpacing="2px"
+              >
+                {arr4.map((item) => {
+                  return <span key={item}> {item}</span>;
+                })}
+              </Text>
+            </Flex>
           </Flex>
-          <Flex
-            border="1px solid  red"
-            h="45px"
-            w="125px"
-            alignItems="center"
-            bg="#E7DDDD"
-            borderLeftRadius="25px"
-          >
-            <Text fontFamily="body" fontSize="25px">
-              {arr3.map((item) => {
-                return <span key={item}> {item}</span>;
-              })}
-            </Text>
-          </Flex>
-        </Flex>
 
-        <Flex
-          h="80px"
-          w="200px"
-          borderRadius="2px"
-          border="1px solid black"
-          bg="#4283B1"
-        >
-          <Flex
-            border="1px solid red"
-            borderRadius="2px"
-            bg="#BEE27A"
-            w="42x"
-            h="42px"
-            alignItems="center"
-            justifyContent="center"
-            m="2px auto auto 3px"
-          >
-            <Text
-              fontFamily="heading"
-              fontSize="18px"
-              fontWeight="bold"
-              color="black"
-            >
-              D
-            </Text>
-          </Flex>
-          <Flex
-            border="1px solid  red"
-            h="45px"
-            w="125px"
-            alignItems="center"
-            bg="#E7DDDD"
-            borderLeftRadius="25px"
-          >
-            <Text fontFamily="body" fontSize="25px">
-              {arr4.map((item) => {
-                return <span key={item}> {item}</span>;
-              })}
+          <Flex h="40px" ml="auto">
+            <Text mr="5px" fontSize="18px" fontWeight="bold" color="#EEE4E4">
+              Sum D = {sum4}
             </Text>
           </Flex>
         </Flex>
       </HStack>
 
-      {/* <div>
-        <br></br>
-        {arr1.map((item) => {
-          return <span key={item}>*** {item}*** </span>;
-        })}
-        <br></br>
-        {arr2.map((item) => {
-          return <span key={item}>*** {item}*** </span>;
-        })}
-        <br></br>
-        {arr3.map((item) => {
-          return <span key={item}>*** {item}*** </span>;
-        })}
-        <br></br>
-        {arr4.map((item) => {
-          return <span key={item}>*** {item}*** </span>;
-        })}
-        <br></br>
-      </div> */}
-      <h3 className="ready">Are you ready to shuffle them all?</h3>
-
-      <Flex>
-        <Button size="md" onClick={handleClick} cursor="cell">
-          Let's Shuffle
-        </Button>
-      </Flex>
-      <p className="gest">Discussed in Belgium, coded in Turkey</p>
-      <Flex
-        mt="auto"
-        mb="15px"
-        alignItems="center"
+      <Box
+        color="AppWorkspace"
+        border="1px solid black"
+        bg="darkcyan"
+        display="flex"
         justifyContent="center"
-        as={ReactRouterLink}
-        to="/"
-        h="40px"
-        w="40px"
-        p={0}
-        border="1px solid green"
-        bg="#138d69"
-        borderRadius="35%"
+        alignItems="center"
+        width="100%"
+        height="100%"
       >
-        <HomeIcon color="white" />
-      </Flex>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          width="15%"
+          height="100%"
+        >
+          <Text mt="1px" fontFamily="heading" fontSize="20px" fontWeight="bold">
+            Winner is = <span style={{ color: "tomato" }}>{winner}</span>
+          </Text>
+        </Box>
+        <Text mt="1px" fontFamily="heading" fontSize="20px" fontWeight="bold">
+          Round: {round}
+        </Text>
+      </Box>
+
+      <Button
+        size="md"
+        onClick={handleClick}
+        disabled={isDisabled}
+        cursor="pointer"
+        border="1px solid red"
+        h="40px"
+        w="65px"
+        borderRadius="5px"
+        fontWeight="bold"
+        fontSize="15px"
+        mt="10px"
+      >
+        PLAY
+      </Button>
+      <Tooltip label="Go to home" bg="red.600" placement="right-start">
+        <Flex
+          mt="5px"
+          mb="auto"
+          alignItems="center"
+          justifyContent="center"
+          as={ReactRouterLink}
+          to="/"
+          h="40px"
+          w="40px"
+          border="1px solid green"
+          bg="#138d69"
+          borderRadius="35%"
+        >
+          <HomeIcon color="white" />
+        </Flex>
+      </Tooltip>
+      <Text fontSize="12px" fontWeight="hairline">
+        Discussed in Belgium, coded in Turkey
+      </Text>
     </Flex>
   );
 };
