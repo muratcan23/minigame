@@ -1,4 +1,6 @@
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
+import HomeIcon from "../Components/icons/HomeIcon";
 
 const About = () => {
   // Example shuffle method
@@ -37,6 +39,22 @@ const About = () => {
 };`}
         </Text>
       </Box>
+      <Flex
+        mt="auto"
+        mb="15px"
+        alignItems="center"
+        justifyContent="center"
+        as={ReactRouterLink}
+        to="/"
+        h="40px"
+        w="40px"
+        p={0}
+        border="1px solid green"
+        bg="#138d69"
+        borderRadius="35%"
+      >
+        <HomeIcon color="white" />
+      </Flex>
     </Flex>
   );
 };
