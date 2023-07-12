@@ -9,7 +9,7 @@ import {
   Tooltip,
   UnorderedList,
 } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { FC, SetStateAction, useState } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import HomeIcon from "../Components/icons/HomeIcon";
 
@@ -17,6 +17,15 @@ const Shuffle: FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [round, setRound] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  // Radio pick
+  const [value, setValue] = useState("");
+
+  const handleRadioChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setValue(event.target.value);
+  };
 
   const arr1: number[] = [];
   const arr2: number[] = [];
@@ -80,7 +89,6 @@ const Shuffle: FC = () => {
       backgroundColor="#8A8D7F"
       alignItems="center"
       h="100%"
-      w="100%"
     >
       <Flex
         background="#6A6562"
@@ -460,19 +468,77 @@ const Shuffle: FC = () => {
           Round: {round}
         </Text>
       </Box>
+      <Flex>
+        <Text fontSize="20px" fontWeight="bold">
+          You Selected= <span style={{ color: "#fff" }}>{value}</span>
+        </Text>
+      </Flex>
+
+      {/* pick */}
+      <HStack
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        width="100%"
+        height="65px"
+        border="1px solid red"
+        bg="#fff"
+        spacing="12%"
+      >
+        <Box>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="A"
+            style={{ cursor: "pointer" }}
+            onChange={handleRadioChange}
+          />
+          A
+        </Box>
+        <Box>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="B"
+            style={{ cursor: "pointer" }}
+            onChange={handleRadioChange}
+          />
+          B
+        </Box>
+        <Box>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="C"
+            style={{ cursor: "pointer" }}
+            onChange={handleRadioChange}
+          />
+          C
+        </Box>
+        <Box>
+          <input
+            type="radio"
+            name="radioGroup"
+            value="D"
+            style={{ cursor: "pointer" }}
+            onChange={handleRadioChange}
+          />
+          D
+        </Box>
+      </HStack>
 
       <Button
         size="md"
         onClick={handleClick}
         disabled={isDisabled}
         cursor="pointer"
-        border="1px solid red"
         h="40px"
         w="65px"
         borderRadius="5px"
         fontWeight="bold"
         fontSize="15px"
         mt="10px"
+        _hover={{ background: "tomato" }}
       >
         PLAY
       </Button>
