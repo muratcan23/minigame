@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Divider,
   Flex,
   HStack,
@@ -47,6 +46,13 @@ const Shuffle: FC = () => {
       // Stop the game
       setIsDisabled(true);
     }
+  };
+
+  // refresh page
+  const handleRestart = () => {
+    setNumbers([]);
+    setRound(0);
+    setIsDisabled(false);
   };
 
   numbers.map((item, i) => {
@@ -527,21 +533,6 @@ const Shuffle: FC = () => {
         </Box>
       </HStack>
 
-      <Button
-        size="md"
-        onClick={handleClick}
-        disabled={isDisabled}
-        cursor="pointer"
-        h="40px"
-        w="65px"
-        borderRadius="5px"
-        fontWeight="bold"
-        fontSize="15px"
-        mt="10px"
-        _hover={{ background: "tomato" }}
-      >
-        PLAY
-      </Button>
       <Tooltip label="Go to home" bg="red.600" placement="right-start">
         <Flex
           mt="5px"
@@ -559,6 +550,41 @@ const Shuffle: FC = () => {
           <HomeIcon color="white" />
         </Flex>
       </Tooltip>
+      <Flex>
+        <Flex
+          as="button"
+          cursor="pointer"
+          h="40px"
+          w="75px"
+          borderRadius="5px"
+          fontWeight="bold"
+          fontSize="15px"
+          mt="10px"
+          _hover={{ background: "tomato" }}
+          onClick={handleClick}
+          disabled={isDisabled}
+          alignItems="center"
+          justifyContent="center"
+        >
+          {isDisabled ? "Game Over" : "PLAY"}
+        </Flex>
+        <Flex
+          as="button"
+          cursor="pointer"
+          h="40px"
+          w="75px"
+          borderRadius="5px"
+          fontWeight="bold"
+          fontSize="15px"
+          mt="10px"
+          _hover={{ background: "#66ACB0" }}
+          onClick={handleRestart}
+          alignItems="center"
+          justifyContent="center"
+        >
+          RESTART
+        </Flex>
+      </Flex>
       <Text fontSize="12px" fontWeight="hairline">
         Discussed in Belgium, coded in Turkey
       </Text>
