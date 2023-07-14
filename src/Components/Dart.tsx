@@ -12,6 +12,7 @@ const Dart = () => {
       bg="#7C978F"
       cursor="none"
       position="relative"
+      p={10}
     >
       <CustomCursor />
       <Flex

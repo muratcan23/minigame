@@ -17,7 +17,7 @@ const Warning = () => {
       justifyContent="center"
     >
       <Flex
-        height="350px"
+        height="360px"
         background="#54AE6C"
         borderTopRadius="25%"
         justifyContent="center"
@@ -38,7 +38,7 @@ const Warning = () => {
                   fontFamily="monospace"
                   fontWeight="bold"
                   color="black"
-                  fontSize="16px"
+                  fontSize="18px"
                 >
                   Hey, be careful! before You begin. If you are not familiar to
                   loose do not play with me.😡
@@ -49,7 +49,7 @@ const Warning = () => {
                   fontFamily="monospace"
                   fontWeight="bold"
                   color="black"
-                  fontSize="16px"
+                  fontSize="18px"
                 >
                   Uncomfortable with basic math? Skip playing with me.
                   <Text color="#BD120F" mt="-1px">
@@ -63,7 +63,7 @@ const Warning = () => {
                   fontFamily="monospace"
                   fontWeight="bold"
                   color="black"
-                  fontSize="16px"
+                  fontSize="18px"
                 >
                   Keep your expectaions low.😒
                 </Text>
@@ -73,7 +73,7 @@ const Warning = () => {
                   fontFamily="monospace"
                   fontWeight="bold"
                   color="black"
-                  fontSize="16px"
+                  fontSize="18px"
                 >
                   Don't be greedy it's just a game... 😊
                 </Text>
