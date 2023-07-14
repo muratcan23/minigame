@@ -5,12 +5,10 @@ import {
   HStack,
   ListItem,
   Text,
-  Tooltip,
   UnorderedList,
 } from "@chakra-ui/react";
 import { FC, SetStateAction, useState } from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
-import HomeIcon from "../Components/icons/HomeIcon";
+import HomeLink from "../Components/HomeLink";
 
 const Shuffle: FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
@@ -488,7 +486,7 @@ const Shuffle: FC = () => {
         width="100%"
         height="65px"
         border="1px solid red"
-        bg="#fff"
+        bg="#EAE8AE"
         spacing="12%"
       >
         <Box>
@@ -533,25 +531,10 @@ const Shuffle: FC = () => {
         </Box>
       </HStack>
 
-      <Tooltip label="Go to home" bg="red.600" placement="right-start">
-        <Flex
-          mt="5px"
-          mb="auto"
-          alignItems="center"
-          justifyContent="center"
-          as={ReactRouterLink}
-          to="/"
-          h="40px"
-          w="40px"
-          border="1px solid green"
-          bg="#138d69"
-          borderRadius="35%"
-        >
-          <HomeIcon color="white" />
-        </Flex>
-      </Tooltip>
+      {/* play and reset */}
       <Flex>
         <Flex
+          border="2px solid black"
           as="button"
           cursor="pointer"
           h="40px"
@@ -568,7 +551,9 @@ const Shuffle: FC = () => {
         >
           {isDisabled ? "Game Over" : "PLAY"}
         </Flex>
+        <Divider />
         <Flex
+          border="2px solid black"
           as="button"
           cursor="pointer"
           h="40px"
@@ -582,9 +567,10 @@ const Shuffle: FC = () => {
           alignItems="center"
           justifyContent="center"
         >
-          RESTART
+          RESET
         </Flex>
       </Flex>
+      <HomeLink />
       <Text fontSize="12px" fontWeight="hairline">
         Discussed in Belgium, coded in Turkey
       </Text>
