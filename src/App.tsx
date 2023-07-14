@@ -1,16 +1,6 @@
-import {
-  AbsoluteCenter,
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Image,
-  ListItem,
-  OrderedList,
-  Text,
-} from "@chakra-ui/react";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Flex, Text } from "@chakra-ui/react";
 import Dart from "./Components/Dart";
+import Warning from "./Components/Warning";
 
 function App() {
   return (
@@ -31,7 +21,7 @@ function App() {
           Welcome to my mini-game app.
         </Text>
       </Flex>
-      <Flex flexDirection="column" justifyContent="center" alignItems="center">
+      {/* <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
           background="#0bc6e3"
           h="5%rem"
@@ -69,7 +59,7 @@ function App() {
         >
           <Flex
             height="350px"
-            background="#E4AE6C"
+            background="#54AE6C"
             borderRadius="10px"
             justifyContent="center"
             alignItems="center"
@@ -158,7 +148,8 @@ function App() {
             GAME
           </AbsoluteCenter>
         </Box>
-      </Flex>
+      </Flex> */}
+      <Warning />
       <Dart />
     </Flex>
   );
