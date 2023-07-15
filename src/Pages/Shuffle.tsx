@@ -10,6 +10,7 @@ import {
 import { FC, SetStateAction, useState } from "react";
 import Clusters from "../Components/Clusters";
 import HomeLink from "../Components/HomeLink";
+import Picks from "../Components/icons/Picks";
 
 const Shuffle: FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
@@ -260,58 +261,7 @@ const Shuffle: FC = () => {
         </Text>
       </Flex>
 
-      {/* pick */}
-      <HStack
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        width="100%"
-        height="65px"
-        border="1px solid red"
-        bg="#EAE8AE"
-        spacing="12%"
-      >
-        <Box>
-          <input
-            type="radio"
-            name="radioGroup"
-            value="A"
-            style={{ cursor: "pointer" }}
-            onChange={handleRadioChange}
-          />
-          A
-        </Box>
-        <Box>
-          <input
-            type="radio"
-            name="radioGroup"
-            value="B"
-            style={{ cursor: "pointer" }}
-            onChange={handleRadioChange}
-          />
-          B
-        </Box>
-        <Box>
-          <input
-            type="radio"
-            name="radioGroup"
-            value="C"
-            style={{ cursor: "pointer" }}
-            onChange={handleRadioChange}
-          />
-          C
-        </Box>
-        <Box>
-          <input
-            type="radio"
-            name="radioGroup"
-            value="D"
-            style={{ cursor: "pointer" }}
-            onChange={handleRadioChange}
-          />
-          D
-        </Box>
-      </HStack>
+      <Picks handleRadioChange={handleRadioChange} />
 
       {/* play and reset */}
       <Flex>
