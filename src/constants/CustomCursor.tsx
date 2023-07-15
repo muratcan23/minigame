@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 const CustomCursor = () => {
@@ -17,7 +17,7 @@ const CustomCursor = () => {
   }, []);
 
   return (
-    <Flex
+    <Box
       alignItems="center"
       justifyContent="center"
       style={{
@@ -32,7 +32,7 @@ const CustomCursor = () => {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
       }}
-    ></Flex>
+    ></Box>
   );
 };
 
