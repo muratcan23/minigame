@@ -19,7 +19,7 @@ const Warning = () => {
       <Flex
         height="360px"
         background="#54AE6C"
-        borderTopRadius="25%"
+        borderTopRadius="1%"
         justifyContent="center"
         alignItems="center"
       >
