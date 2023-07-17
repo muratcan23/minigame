@@ -42,11 +42,16 @@ const Shuffle: FC = () => {
   };
 
   // refresh page
-  const handleRestart = () => {
-    setNumbers([]);
-    setRound(0);
-    setIsDisabled(false);
+
+  const handleRefreshClick = () => {
+    window.location.reload();
   };
+
+  // const handleRestart = () => {
+  //   setNumbers([]);
+  //   setRound(0);
+  //   setIsDisabled(false);
+  // };
 
   numbers.map((item, i) => {
     if (i < 4) return arr1.push(item);
@@ -189,7 +194,7 @@ const Shuffle: FC = () => {
           fontSize="15px"
           mt="10px"
           _hover={{ background: "#66ACB0" }}
-          onClick={handleRestart}
+          onClick={handleRefreshClick}
           alignItems="center"
           justifyContent="center"
         >
