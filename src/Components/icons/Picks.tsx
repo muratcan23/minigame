@@ -1,11 +1,22 @@
 import { Box } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 interface PicksProps {
   handleRadioChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Picks: React.FC<PicksProps> = ({ handleRadioChange }) => {
+  const [locked, setLocked] = useState(false);
+
+  const handleRadioChangeWithLock = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (!locked) {
+      handleRadioChange(event);
+      setLocked(true);
+    }
+  };
+
   return (
     <Box
       display="flex"
@@ -22,7 +33,8 @@ const Picks: React.FC<PicksProps> = ({ handleRadioChange }) => {
           name="radioGroup"
           value="A"
           style={{ cursor: "pointer" }}
-          onChange={handleRadioChange}
+          onChange={handleRadioChangeWithLock}
+          disabled={locked}
         />
         A
       </Box>
@@ -32,7 +44,8 @@ const Picks: React.FC<PicksProps> = ({ handleRadioChange }) => {
           name="radioGroup"
           value="B"
           style={{ cursor: "pointer" }}
-          onChange={handleRadioChange}
+          onChange={handleRadioChangeWithLock}
+          disabled={locked}
         />
         B
       </Box>
@@ -42,7 +55,8 @@ const Picks: React.FC<PicksProps> = ({ handleRadioChange }) => {
           name="radioGroup"
           value="C"
           style={{ cursor: "pointer" }}
-          onChange={handleRadioChange}
+          onChange={handleRadioChangeWithLock}
+          disabled={locked}
         />
         C
       </Box>
@@ -52,7 +66,8 @@ const Picks: React.FC<PicksProps> = ({ handleRadioChange }) => {
           name="radioGroup"
           value="D"
           style={{ cursor: "pointer" }}
-          onChange={handleRadioChange}
+          onChange={handleRadioChangeWithLock}
+          disabled={locked}
         />
         D
       </Box>
