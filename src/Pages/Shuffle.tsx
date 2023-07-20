@@ -1,14 +1,19 @@
-import { Box, Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, HStack, Text, useToast } from "@chakra-ui/react";
 import { FC, SetStateAction, useState } from "react";
 import Clusters from "../Components/Clusters";
 import HomeLink from "../Components/HomeLink";
 import Instructions from "../Components/Instructions";
+import ToastMessage from "../Components/ToastMessage";
 import Picks from "../Components/icons/Picks";
 
 const Shuffle: FC = () => {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [round, setRound] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
+
+  const [showToast, setShowToast] = useState(false); // Initialize the state properly
+  const toast = useToast();
+  const scoreMessage = `Here's your score: ...`;
 
   // Radio pick
   const [value, setValue] = useState("");
@@ -42,16 +47,14 @@ const Shuffle: FC = () => {
   };
 
   // refresh page
-
   const handleRefreshClick = () => {
-    window.location.reload();
-  };
+    setShowToast(true);
 
-  // const handleRestart = () => {
-  //   setNumbers([]);
-  //   setRound(0);
-  //   setIsDisabled(false);
-  // };
+    setTimeout(() => {
+      setShowToast(false);
+      window.location.reload();
+    }, 3000);
+  };
 
   numbers.map((item, i) => {
     if (i < 4) return arr1.push(item);
@@ -201,12 +204,20 @@ const Shuffle: FC = () => {
           RESET
         </Flex>
       </Flex>
+
       <HomeLink />
-      <Text fontSize="12px" fontWeight="hairline">
-        Discussed in Belgium, coded in Turkey
-      </Text>
+      {showToast && <ToastMessage message={scoreMessage} />}
     </Flex>
   );
 };
 
 export default Shuffle;
+function toast(arg0: {
+  position: string;
+  render: () => import("react/jsx-runtime").JSX.Element;
+}) {
+  throw new Error("Function not implemented.");
+}
+function setShowToast(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
